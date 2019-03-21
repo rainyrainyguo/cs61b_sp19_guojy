@@ -1,10 +1,10 @@
 public class Body{
-	double xxPos,
-		   yyPos,
-		   xxVel,
-		   yyVel,
-		   mass;
-	String imgFileName;
+	public double xxPos,
+				  yyPos,
+				  xxVel,
+				  yyVel,
+				  mass;
+	public String imgFileName;
 	static final double G = 6.67E-11;
 
 	public Body(double xP, double yP, double xV,
@@ -72,4 +72,8 @@ public class Body{
 		xxPos = xxPos + dt*xxVel;
 		yyPos = yyPos + dt*yyVel;
 	}	
+	public void draw(){
+		String imgpath = "./images/" + this.imgFileName;
+		StdDraw.picture(this.xxPos, this.yyPos, imgpath);
+	}
 }
