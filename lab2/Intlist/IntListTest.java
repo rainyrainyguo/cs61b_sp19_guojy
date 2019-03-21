@@ -65,4 +65,27 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
+    @Test
+    public void testGet(){
+        IntList A = IntList.of(1, 2, 3);
+        assertEquals(1, A.get(0));
+        assertEquals(2, A.get(1));
+    }
+
+    @Test
+    public void testDouble(){
+        IntList A = IntList.of(1, 2, 3);
+        IntList exp = IntList.of(2,4,6);
+        assertEquals(exp, IntList.doublelist(A));
+        assertEquals(IntList.of(1, 2, 3), A);
+    }
+
+    @Test
+    public void testDouble2(){
+        IntList A = IntList.of(1, 2, 3);
+        IntList exp = IntList.of(2,4,6);
+        assertEquals(exp, IntList.doublelist2(A));
+        assertEquals(exp, A);
+    }
+
 }

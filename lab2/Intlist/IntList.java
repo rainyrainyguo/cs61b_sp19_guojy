@@ -111,6 +111,41 @@ public class IntList {
         q.rest = B;
         return p;
     }
+    public int get(int i){
+        IntList p = this;
+        int j = 0;
+        while(j<i){
+            p = p.rest;
+            j+=1;
+        }
+        return p.first;
+    }
+
+    public static IntList doublelist(IntList A){
+        if(A==null){
+            return null;
+        }
+        IntList p = new IntList(A.first*2,null);
+        IntList q = p;
+        while(A.rest!=null){
+            A = A.rest;
+            q.rest = new IntList(A.first*2, null);
+            q = q.rest;
+        }
+        return p;
+    }
+
+    public static IntList doublelist2(IntList A){
+        if(A==null){
+            return null;
+        }
+        IntList p = A;
+        while(p!=null){
+            p.first = p.first*2;
+            p = p.rest;
+        }
+        return A;
+    }
 
 
 
