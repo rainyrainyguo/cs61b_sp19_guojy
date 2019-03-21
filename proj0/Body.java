@@ -40,5 +40,36 @@ public class Body{
 	}	
 	public double calcForceExertedByY(Body b){
 		return calcForceExertedBy(b)*(b.yyPos-yyPos)/calcDistance(b);
+	}	
+
+	public double calcForceExertedByX(Body[] allb){
+		double sum = 0;
+		for(Body b:allb){
+			if(this.equals(b)){
+				continue;
+			}else{
+			sum += calcForceExertedByX(b);	
+			}
+		}
+		return sum;
+	}		
+	public double calcForceExertedByY(Body[] allb){
+		double sum = 0;
+		for(Body b:allb){
+			if(this.equals(b)){
+				continue;
+			}else{
+			sum += calcForceExertedByY(b);	
+			}
+		}
+		return sum;
 	}
+	public void update(double dt, double fX, double fY){
+		double ax = fX/mass;
+		double ay = fY/mass;
+		xxVel = xxVel + dt*ax;
+		yyVel = yyVel + dt*ay;
+		xxPos = xxPos + dt*xxVel;
+		yyPos = yyPos + dt*yyVel;
+	}	
 }
