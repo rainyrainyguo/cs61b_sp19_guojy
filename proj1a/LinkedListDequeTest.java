@@ -1,3 +1,7 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
 	
@@ -82,6 +86,38 @@ public class LinkedListDequeTest {
 
 		printTestStatus(passed);
 		*/
+	}
+
+	@Test
+	public void test1(){
+//		LinkedListDeque<Integer> L = new LinkedListDeque();
+//		L.addFirst(2);
+//		L.addFirst(1);
+//		L.addLast(3);
+		LinkedListDeque<Integer> x = new LinkedListDeque();
+		x.addLast(1);
+		x.addLast(2);
+		LinkedListDeque<String> y = new LinkedListDeque(x);
+//		System.out.println(L.getIterative(0));
+//		System.out.println(L.getIterative(2));
+//		assertEquals(null,L.getIterative(3));
+//		int a = L.getIterative(0);
+//		int b = L.getIterative(2);
+//		assertEquals(1,a);
+//		assertEquals(3,b);
+//		assertEquals(null,L.getIterative(10));
+//		L.printDeque();
+//		L.addLast(4);
+//		L.printDeque();
+//		L.addFirst(0);
+//		L.printDeque();
+//		L.removeLast();
+//		L.printDeque();
+//		L.removeFirst();
+//		L.printDeque();
+//		if(L.removeLast()==null){
+//			System.out.println("null");
+//		}
 	}
 
 	public static void main(String[] args) {

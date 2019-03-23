@@ -85,7 +85,7 @@ public class IntList {
             return B;
         }
         IntList pre = A;
-        while(pre.rest!=null){
+        while (pre.rest != null) {
             pre = pre.rest;
         }
         pre.rest = B;
@@ -97,7 +97,7 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        if(A==null){
+        if (A == null){
             return B;
         }
         IntList p = new IntList(A.first , null);
@@ -165,13 +165,9 @@ public class IntList {
         return i;
     }
 
-
-
-
-
-
-
-
+    public IntList reverse(){
+        return null;
+    }
 
 
 

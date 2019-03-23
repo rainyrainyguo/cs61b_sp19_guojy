@@ -2,7 +2,7 @@
  *  @author Josh Hug
  */
 
-public class ArrayBasics2 {
+public class ArraysBasics2 {
 	/** ArrayBasics
 	 */
 

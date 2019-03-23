@@ -88,4 +88,16 @@ public class IntListTest {
         assertEquals(exp, A);
     }
 
+    @Test
+    public void testSize(){
+        IntList A = IntList.of(1, 2, 3);
+        assertEquals(3, A.size());
+    }
+
+    @Test
+    public void testiterativeSize(){
+        IntList A = IntList.of(1,2,3);
+        assertEquals(3,A.iterativeSize());
+    }
+
 }

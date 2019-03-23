@@ -41,4 +41,12 @@ public class TestSort {
         Sort.swap(input, a, b);
         assertArrayEquals(expected, input);
     }
+
+    @Test
+    public void testArray(){
+        int[][] a = {{1,2},{3,4}};
+        int[][] b = {{1,2},{3,4}};
+        assertArrayEquals(a,b);
+        assertEquals(a,b);
+    }
 }
