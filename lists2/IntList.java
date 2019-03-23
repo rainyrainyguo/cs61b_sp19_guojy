@@ -34,11 +34,73 @@ public class IntList {
 		return rest.get(i - 1);
 	}
 
-	public static void main(String[] args) {
-		IntList L = new IntList(15, null);
-		L = new IntList(10, L);
-		L = new IntList(5, L);
+	/**	We want to add a method to IntList so that if 2 numbers in a row are the same, we add them together and
+	make one large node. For example:1 → 1 → 2 → 3 becomes 2 → 2 → 3 which becomes 4 → 3*/
+	public void addAdjacent(){
+		IntList p = this;
+		while(p.rest!=null){
+			while(p.rest.first == p.first){
+				p.first *= 2;
+				p.rest = p.rest.rest;
+			}
+			p = p.rest;
+		}
+	}
 
-		System.out.println(L.get(100));
+	public static IntList square(IntList L){
+		if(L==null){
+			return null;
+		} else{
+			IntList B = new IntList(L.first*L.first,square(L.rest));
+			return B;
+		}
+	}
+
+	public static IntList squareIterative(IntList L){
+		if(L==null){
+			return null;
+		} else{
+			IntList B = new IntList(L.first*L.first,null);
+			IntList p = B;
+			L = L.rest;
+			while(L!=null){
+				p.rest = new IntList(L.first*L.first,null);
+				p = p.rest;
+				L = L.rest;
+			}
+			return B;
+		}
+	}
+
+	public static IntList squareDestructive(IntList L){
+		IntList p = L;
+		while(p.rest!=null){
+			p.first = p.first*p.first;
+			p = p.rest;
+		}
+		return L;
+	}
+
+	public static IntList squareDestructiveRecursive(IntList L){
+		if(L==null) {
+			return null;
+		}
+		L.first = L.first*L.first;
+		squareDestructiveRecursive(L.rest);
+		return L;
+	}
+
+
+	public static void main(String[] args) {
+		IntList L = new IntList(3, null);
+		L = new IntList(2, L);
+		L = new IntList(5, L);
+		L = new IntList(6,L);
+		//IntList B = IntList.square(L);
+		//IntList D = IntList.squareIterative(L);
+		IntList E = IntList.squareDestructiveRecursive(L);
+		//IntList C = IntList.squareDestructive(L);
+		//L.addAdjacent();
+		//System.out.println(L.get(100));
 	}
 } 
