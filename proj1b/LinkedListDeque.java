@@ -61,11 +61,11 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         sentinel.prev = sentinel.prev.next;
         size += 1;
     }
-    @Override
+/*    @Override
     public boolean isEmpty() {
-        /**returns true if empty*/
+        *//**returns true if empty*//*
         return (size == 0);
-    }
+    }*/
     @Override
     public int size() {
         return size;

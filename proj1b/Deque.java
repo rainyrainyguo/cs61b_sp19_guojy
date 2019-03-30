@@ -7,6 +7,6 @@ public interface Deque<Item> {
     public Item removeFirst();
     public Item removeLast();
     default public boolean isEmpty(){
-        return true;
+        return (size() == 0);
     }
 }
