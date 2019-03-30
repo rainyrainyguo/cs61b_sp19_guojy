@@ -28,4 +28,22 @@ public class ArrayDequeTest {
         ArrayDeque<String> c = new ArrayDeque(a);
         c.printDeque();
     }
+
+    @Test
+    public void IsEmptyTest() {
+        System.out.println("Perform IsEmptyTest1");
+        ArrayDeque<Integer> array = new ArrayDeque<>();
+        // Test isEmpty()
+        assertEquals(array.isEmpty(), true);
+
+        System.out.println("Perform IsEmptyTest2");
+
+        ArrayDeque<Integer> array2 = new ArrayDeque<>();
+        array2.addFirst(234);
+        array2.addLast(432);
+        // Test isEmpty()
+        assertEquals(array2.isEmpty(), false);
+
+    }
+
 }
