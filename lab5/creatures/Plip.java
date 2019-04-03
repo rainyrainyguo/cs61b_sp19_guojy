@@ -57,7 +57,9 @@ public class Plip extends Creature {
      * that you get this exactly correct.
      */
     public Color color() {
-        g = 63;
+        r = 99;
+        b = 76;
+        g = 63 + (int)(96.0 * energy);
         return color(r, g, b);
     }
 
@@ -75,6 +77,7 @@ public class Plip extends Creature {
      */
     public void move() {
         // TODO
+        energy = Math.max(energy - 0.15, 0);
     }
 
 
@@ -83,6 +86,7 @@ public class Plip extends Creature {
      */
     public void stay() {
         // TODO
+        energy = Math.min(energy + 0.2, 2);
     }
 
     /**
@@ -91,7 +95,8 @@ public class Plip extends Creature {
      * Plip.
      */
     public Plip replicate() {
-        return this;
+        energy *= 0.5;
+        return new Plip(energy);
     }
 
     /**
@@ -111,19 +116,32 @@ public class Plip extends Creature {
         // Rule 1
         Deque<Direction> emptyNeighbors = new ArrayDeque<>();
         boolean anyClorus = false;
-        // TODO
-        // (Google: Enhanced for-loop over keys of NEIGHBORS?)
-        // for () {...}
 
-        if (false) { // FIXME
-            // TODO
+        for(Direction dir: neighbors.keySet()) {
+            Occupant occ = neighbors.get(dir);
+            if(occ == null){
+                emptyNeighbors.push(dir);
+            } else if(occ.name()=="clorus"){
+                anyClorus = true;
+            }
         }
-
+        if(emptyNeighbors.size() == 4) {
+            return new Action(Action.ActionType.STAY);
+        }
         // Rule 2
         // HINT: randomEntry(emptyNeighbors)
-
+        if(energy >= 1){
+            Direction random_dir = huglife.HugLifeUtils.randomEntry(emptyNeighbors);
+            return new Action(Action.ActionType.REPLICATE, random_dir);
+        }
         // Rule 3
-
+        else if(anyClorus){
+            Direction random_dir = huglife.HugLifeUtils.randomEntry(emptyNeighbors);
+            double prob = Math.random();
+            if(prob > 0.5){
+                return new Action(Action.ActionType.MOVE, random_dir);
+            }
+        }
         // Rule 4
         return new Action(Action.ActionType.STAY);
     }
